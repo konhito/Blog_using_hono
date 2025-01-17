@@ -1,28 +1,16 @@
 import { Hono } from "hono";
+import { userRouter } from "./routes/User";
+import { blogRouter } from "./routes/Blog";
+import { cors } from "hono/cors";
 
-// Create the main Hono app
-const app = new Hono();
-
-app.post("/api/v1/signup", (c) => {
-  return c.text("signup route");
-});
-
-app.post("/api/v1/signin", (c) => {
-  return c.text("signin route");
-});
-
-app.get("/api/v1/blog/:id", (c) => {
-  const id = c.req.param("id");
-  console.log(id);
-  return c.text("get blog route");
-});
-
-app.post("/api/v1/blog", (c) => {
-  return c.text("signin route");
-});
-
-app.put("/api/v1/blog", (c) => {
-  return c.text("signin route");
-});
+const app = new Hono<{
+  Bindings: {
+    DATABASE_URL: string;
+    JWT_SECRET: string;
+  };
+}>();
+app.use("/*", cors());
+app.route("/user", userRouter);
+app.route("/blog", blogRouter);
 
 export default app;
