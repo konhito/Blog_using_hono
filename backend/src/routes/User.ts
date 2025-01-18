@@ -53,10 +53,10 @@ userRouter.post("/signin", async (c) => {
   const body = await c.req.json();
   const { success } = signinInput.safeParse(body);
   if (!success) {
-    c.status(411);
-    return c.json({
-      message: "Inputs not correct",
-    });
+    // c.status(411);
+    // return c.json({
+    //   message: "Inputs not correct",
+    // });
   }
 
   const prisma = new PrismaClient({
