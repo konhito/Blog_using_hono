@@ -32,7 +32,7 @@ const Auth = ({ type }: { type: "Signin" | "Signup" }) => {
     const value = localStorage.getItem("token"); //addverification
     // localStorage.setItem("name", postInputs.name || "");
     if (value) {
-      navigate("/blog");
+      navigate("/blogs");
     }
   }, []);
 
