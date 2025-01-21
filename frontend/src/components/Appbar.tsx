@@ -14,18 +14,15 @@ const Appbar = () => {
         </button>
 
         {/* Icon */}
-        <div
-          className="text-xl cursor-pointer font-bold cursor-pointer"
-          aria-hidden="true"
-        >
+        <div className="text-xl  font-bold cursor-pointer" aria-hidden="true">
           •••
         </div>
 
-        {/* Avatar */}
         <Avatar authorInitials="Aditya" size={10} />
       </div>
     </div>
   );
 };
+
 
 export default Appbar;

@@ -9,7 +9,7 @@ const BlogCard = ({
   authorName,
   title,
   content,
-  publishedDate,
+  publishedDate = "1-1-2025",
 }: BlogCardProps) => {
   return (
     <div className="border-b cursor-pointer border-slate-200 p-4 rounded-lg shadow-md shadow-slate-900/20 shadow-b-2 ">
