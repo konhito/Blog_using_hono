@@ -1,31 +1,34 @@
+import { Avatar } from "../components/BlogCard";
 import { useBlog } from "../hooks";
 import { useParams } from "react-router-dom";
-import BlogCard from "../components/BlogCard";
+
 const Blog = () => {
-  const { handle } = useParams();
-  const { loading, blog } = useBlog(handle);
+  const { id } = useParams();
+  const { blog } = useBlog({ id: id || "" });
   return (
     <div>
       <div className="flex justify-center">
-        <div className="max-w-2xl w-full space-y-4">
-          {(loading ? [...Array(5)] : blog).map((blogs, index) => (
-            <div key={index}>
-              {loading ? (
-                <div className="animate-pulse space-y-4">
-                  <div className="h-6 bg-gray-200 rounded dark:bg-gray-700 w-3/4"></div>
-                  <div className="h-4 bg-gray-200 rounded dark:bg-gray-700 w-full"></div>
-                  <div className="h-4 bg-gray-200 rounded dark:bg-gray-700 w-5/6"></div>
+        <div className="grid grid-cols-12 px-10 w-full pt-200 max-w-screen-xl pt-12">
+          <div className="col-span-8">
+            <div className="text-5xl font-extrabold">{blog.title}</div>
+            <div className="text-slate-500 pt-2">Post on 2nd December 2023</div>
+            <div className="pt-4">{blog.content}</div>
+          </div>
+          <div className="col-span-4">
+            <div className="text-slate-600 text-lg">Author</div>
+            <div className="flex w-full">
+              <div className="pr-4 flex flex-col justify-center">
+                <Avatar size="big" name={blog.author.name} />
+              </div>
+              <div>
+                <div className="text-xl font-bold">{blog.author.name}</div>
+                <div className="pt-2 text-slate-500">
+                  Random catch phrase about the author's ability to grab the
+                  user's attention
                 </div>
-              ) : (
-                <BlogCard
-                  key={blogs.id}
-                  authorName={blogs.author.name}
-                  title={blogs.title}
-                  content={blogs.content}
-                />
-              )}
+              </div>
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </div>

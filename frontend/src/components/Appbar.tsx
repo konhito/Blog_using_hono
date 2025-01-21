@@ -18,11 +18,10 @@ const Appbar = () => {
           •••
         </div>
 
-        <Avatar authorInitials="Aditya" size={10} />
+        <Avatar name="Aditya" size="big" />
       </div>
     </div>
   );
 };
-
 
 export default Appbar;

@@ -44,7 +44,7 @@ export const useBlog = ({ id }: { id: string }) => {
         setBlog(response.data.blog);
         setLoading(false);
       });
-  }, [id]);
+  }, []);
   return {
     loading,
     blog,
